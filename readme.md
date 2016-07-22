@@ -7,8 +7,8 @@ beetlsql
   
 NOTE:this test in war package and use `java -jar xxx.war` to run embed tomcat.    
   
-use ide to start spring-boot with commend `spring-boot` then classpath root is `target/classes`  
-run with `java -jar xxx.war` package then classpath root is `war!/`, so this project code `BeetlAutoConfiguration.getBeetlGroupUtilConfiguration` check `WEB-INF/classes/` is exist
+use ide to start spring-boot with maven commend `mvn spring-boot:run` then classpath root is `target/classes`  
+run packaged war with java commend `java -jar xxx.war` then classpath root is `/xxx/xxx/xxx.war!/`, so this project code `BeetlAutoConfiguration.getBeetlGroupUtilConfiguration` check `WEB-INF/classes/` is exist
 
 
 beetl view template is in `resources/templates`, but if your maven pom config `jar` package, the view template is in `resource/sttic` or you can modify application.properties config  

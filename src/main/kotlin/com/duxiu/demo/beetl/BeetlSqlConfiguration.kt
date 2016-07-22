@@ -35,7 +35,6 @@ open class BeetlSqlConfiguration {
 		return conf
 	}
 	
-	@Suppress("SpringKotlinAutowiring")
 	@Bean(name = arrayOf("sqlManagerFactoryBean"))
 	@Primary
 	open fun getSqlManagerFactoryBean(@Qualifier("datasource") datasource: DataSource): SqlManagerFactoryBean {
@@ -52,7 +51,6 @@ open class BeetlSqlConfiguration {
 	}
 	
 	
-	@Suppress("SpringKotlinAutowiring")
 	@Bean(name = arrayOf("txManager"))
 	open fun getDataSourceTransactionManager(@Qualifier("datasource") datasource: DataSource): DataSourceTransactionManager {
 		val dsm = DataSourceTransactionManager()

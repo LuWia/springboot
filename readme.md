@@ -11,7 +11,7 @@ use ide to start spring-boot with maven commend `mvn spring-boot:run` then class
 run packaged war with java commend `java -jar xxx.war` then classpath root is `/xxx/xxx/xxx.war!/`, so this project code `BeetlAutoConfiguration.getBeetlGroupUtilConfiguration` check `WEB-INF/classes/` is exist
 
 
-beetl view template is in `resources/templates`, but if your maven pom config `jar` package, the view template is in `resource/sttic` or you can modify application.properties config  
+beetl view template is in `resources/templates`, but if your maven pom config `jar` package, the view template is in `resource/static` or you can modify application.properties config  
 `spring.resources.static-locations=classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/ # Locations of static resources.`  
 
 reference:  

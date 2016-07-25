@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.ResponseBody
 
 @RequestMapping("/user")
 @Controller
-class UserAction {
-	@Autowired
-	lateinit var sqlManage: SQLManager
+class UserAction  @Autowired constructor(val sqlManager: SQLManager, val usersDao: UsersDao) {
+	/*@Autowired
+	lateinit var sqlManager: SQLManager
 	@Suppress("SpringKotlinAutowiring")
 	@Autowired
-	lateinit var usersDao: UsersDao
+	lateinit var usersDao: UsersDao*/
 	
 	@RequestMapping("")
 	@ResponseBody
@@ -28,7 +28,7 @@ class UserAction {
 	fun page(): String {
 		println(usersDao.fa(1))
 		println("===============================")
-		println( sqlManage.select("users.allUsers", Users::class.java, null).size)
+		println( sqlManager.select("users.allUsers", Users::class.java, null).size)
 		return "/index"
 	}
 }

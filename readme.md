@@ -1,4 +1,4 @@
-this is simple for kotlin use spring boot 1.4.1 with  
+this is simple for kotlin use spring boot 1.4.2 with  
 fastjson  
 druid  
 beetl  

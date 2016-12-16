@@ -9,8 +9,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
-import org.springframework.core.io.DefaultResourceLoader
-import org.springframework.core.io.support.ResourcePatternUtils
 import java.util.*
 
 
@@ -20,7 +18,7 @@ open class BeetlProperties {
 	var prefix = ""
 	var suffix = ".btl"
 	var contentType = "text/html;charset=UTF-8"
-	var baseRoot = "classpath:templates"
+	var baseRoot = "templates"
 	val properties = Properties()
 	
 }
@@ -32,16 +30,8 @@ open class BeetlAutoConfiguration {
 	
 	@Bean(initMethod = "init", name = arrayOf("beetlConfig"))
 	open fun getBeetlGroupUtilConfiguration(beetlProperties: BeetlProperties, applicationContext: ApplicationContext): BeetlGroupUtilConfiguration {
-		
-		val patternResolver = ResourcePatternUtils.getResourcePatternResolver(DefaultResourceLoader())
-		val baseRoot = if (patternResolver.getResource("WEB-INF/classes/${beetlProperties.baseRoot}").exists()) {
-			"WEB-INF/classes/${beetlProperties.baseRoot}"
-		}else{
-			beetlProperties.baseRoot
-		}
-		
 		val beetlGroupUtilConfiguration = BeetlGroupUtilConfiguration()
-		val webAppResourceLoader = ClasspathResourceLoader(baseRoot)
+		val webAppResourceLoader = ClasspathResourceLoader(beetlProperties.baseRoot)
 		beetlGroupUtilConfiguration.setResourceLoader(webAppResourceLoader)
 		beetlGroupUtilConfiguration.setConfigProperties(beetlProperties.properties)
 		return beetlGroupUtilConfiguration

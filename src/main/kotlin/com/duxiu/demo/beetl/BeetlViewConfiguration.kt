@@ -11,16 +11,13 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import java.util.*
 
-
-
 @ConfigurationProperties(prefix = "spring.beetl")
 open class BeetlProperties {
 	var prefix = ""
 	var suffix = ".btl"
 	var contentType = "text/html;charset=UTF-8"
 	var baseRoot = "templates"
-	val properties = Properties()
-	
+	val properties = Properties()//其它扩展属性可以在.properties里添加spring.beetl.properties.xxx=xxx
 }
 
 @Suppress("SpringKotlinAutowiring")
